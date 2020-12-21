@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualizer</title>
+    <link rel="stylesheet" type="text/css" href="./styles/index.css">
+</head>
+
+<body>
+    <div id="appContainer">
+        <div id="sortingContainer"></div>
+        <footer id="footer">
+            <div style="display: flex;">
+                <input id="columnAmount" class="slider" type="range" min="5" max="100" value="10" oninput="generateColumns(this.value)">
+            </div>
+            <div>
+                <div class="select-menu">
+                    <select id="sortingMethod">
+                      <option>Select Sort:</option>
+                      <option value="bubbleSort">Bubble Sort</option>
+                      <option value="quickSort">Quick Sort</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button class="button" onclick="beginSorting()">Begin Sorting</button>
+            </div>
+        </footer>
+    </div>
+    <script src="./sorting-algorithms/bubbleSort.js"></script>
+    <script src="./components/select-menu.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

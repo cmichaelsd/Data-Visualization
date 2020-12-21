@@ -1,0 +1,82 @@
+@use "variables" as v;
+.slider {
+    width: 100%;
+    margin: 6.4px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    &:focus {
+        outline: none;
+    }
+    &::-webkit-slider-runnable-track {
+        background: v.$base-color-one;
+        border: 0.2px solid v.$border-color;
+        border-radius: 25px;
+        width: 100%;
+        height: 7.2px;
+        cursor: pointer;
+    }
+    &::-webkit-slider-thumb {
+        margin-top: -6.6px;
+        width: 20px;
+        height: 20px;
+        background: v.$base-color-two;
+        border: 1px solid v.$border-color;
+        border-radius: 50px;
+        cursor: pointer;
+        -webkit-appearance: none;
+    }
+    &:focus::-webkit-slider-runnable-track {
+        background: #f5aeae;
+    }
+    &::-moz-range-track {
+        background: v.$base-color-one;
+        border: 0.2px solid v.$border-color;
+        border-radius: 25px;
+        width: 100%;
+        height: 7.2px;
+        cursor: pointer;
+    }
+    &::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: v.$base-color-two;
+        border: 1px solid v.$border-color;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+    &::-ms-track {
+        background: transparent;
+        border-color: transparent;
+        border-width: 7.4px 0;
+        color: transparent;
+        width: 100%;
+        height: 7.2px;
+        cursor: pointer;
+    }
+    &::-ms-fill-lower {
+        background: #eb5252;
+        border: 0.2px solid v.$border-color;
+        border-radius: 50px;
+    }
+    &::-ms-fill-upper {
+        background: v.$base-color-one;
+        border: 0.2px solid v.$border-color;
+        border-radius: 50px;
+    }
+    &::-ms-thumb {
+        width: 20px;
+        height: 20px;
+        background: v.$base-color-two;
+        border: 1px solid v.$border-color;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-top: 0px;
+        /*Needed to keep the Edge thumb centred*/
+    }
+    &:focus::-ms-fill-lower {
+        background: v.$base-color-one;
+    }
+    &:focus::-ms-fill-upper {
+        background: #f5aeae;
+    }
+}

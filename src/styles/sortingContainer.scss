@@ -1,0 +1,21 @@
+@use "variables" as v;
+#appContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    #sortingContainer {
+        width: 1000px;
+        height: 563px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        .column {
+            box-sizing: border-box;
+            border: 1px solid v.$border-color;
+            background-color: v.$base-color-one;
+        }
+    }
+}
