@@ -4,8 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build-ts": "npx tsc",
+        "build-tsc": "npx tsc",
         "build-scss": "sass src/styles/index.scss build/styles/index.css",
+        "build": "npm run build-tsc & npm run build-scss",
+        "dev-scss": "sass --watch src/styles/index.scss build/styles/index.css",
+        "dev-tsc": "npx tsc --watch",
+        "dev": "npm run dev-scss & npm run dev-tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],

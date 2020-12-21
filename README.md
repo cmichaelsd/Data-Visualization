@@ -6,7 +6,6 @@ This repo exists to demonstrate visually how different algorithms function.
 * From root directory run the following:
 ```
 npm install
-npm run build-scss
-npm run build-ts
+npm run build
 ```
 * Open build/index.html in browser

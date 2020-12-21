@@ -171,10 +171,5 @@ function onSelectChange() {
  * Driver function for the program. 
  */
 (function main() {
-    createSelectMenu((option) => {
-        const columnsAmount = Number((document.getElementById('columnAmount') as HTMLInputElement).value);
-        generateColumns(columnsAmount);
-    });
-
     generateColumns(10);
 })();

@@ -1,49 +1,94 @@
 @use "variables" as v;
 .select-menu {
     position: relative;
-    font-family: Arial;
-    width: 200px;
     select {
-        display: none;
-        /*hide original SELECT element: */
-    }
-    .select-selected {
+        font-size: 1rem;
+        padding: .5em 2em .5em 1em;
         background-color: v.$base-color-one;
-        &:after {
+        color: white;
+        border: 0;
+        &:hover {
+            background-color: mix(v.$base-color-one, v.$base-color-two, 40%);
+        }
+    }
+    .select-arrow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        background-color: v.$base-color-two;
+        height: 100%;
+        width: 2rem;
+        pointer-events: none;
+        &::before,
+        &::after {
+            content: ' ';
             position: absolute;
-            content: "";
-            top: 14px;
-            right: 10px;
             width: 0;
             height: 0;
-            border: 6px solid transparent;
-            border-color: #fff transparent transparent transparent;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
-        &.select-arrow-active:after {
-            border-color: transparent transparent #fff transparent;
-            top: 7px;
+        &::before {
+            top: 40%;
+            border-left: v.$select-arrow-size solid transparent;
+            border-right: v.$select-arrow-size solid transparent;
+            border-bottom: v.$select-arrow-size solid white;
         }
-    }
-    .select-items div,
-    .select-selected {
-        color: #ffffff;
-        padding: 8px 16px;
-        border: 1px solid transparent;
-        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-        cursor: pointer;
-        &:hover {
-            background-color: v.$base-color-two;
+        &::after {
+            top: 60%;
+            border-left: v.$select-arrow-size solid transparent;
+            border-right: v.$select-arrow-size solid transparent;
+            border-top: v.$select-arrow-size solid white;
         }
-    }
-    .select-items {
-        position: absolute;
-        background-color: v.$base-color-one;
-        top: 100%;
-        left: 0;
-        right: 0;
-        z-index: 99;
-    }
-    .select-hide {
-        display: none;
     }
 }
+
+// .select-menu {
+//     position: relative;
+//     font-family: Arial;
+//     width: 200px;
+//     select {
+//         display: none;
+//         /*hide original SELECT element: */
+//     }
+//     .select-selected {
+//         background-color: v.$base-color-one;
+//         &:after {
+//             position: absolute;
+//             content: "";
+//             top: 14px;
+//             right: 10px;
+//             width: 0;
+//             height: 0;
+//             border: 6px solid transparent;
+//             border-color: #fff transparent transparent transparent;
+//         }
+//         &.select-arrow-active:after {
+//             border-color: transparent transparent #fff transparent;
+//             top: 7px;
+//         }
+//     }
+//     .select-items div,
+//     .select-selected {
+//         color: #ffffff;
+//         padding: 8px 16px;
+//         border: 1px solid transparent;
+//         border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+//         cursor: pointer;
+//         &:hover {
+//             background-color: v.$base-color-two;
+//         }
+//     }
+//     .select-items {
+//         position: absolute;
+//         background-color: v.$base-color-one;
+//         top: 100%;
+//         left: 0;
+//         right: 0;
+//         z-index: 99;
+//     }
+//     .select-hide {
+//         display: none;
+//     }
+// }

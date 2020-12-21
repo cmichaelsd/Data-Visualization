@@ -3,11 +3,11 @@
     background-color: v.$base-color-one;
     border: none;
     color: white;
-    padding: 9px 32px;
+    padding: .5em 1em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
     &:hover {
         background-color: v.$base-color-two;
     }
