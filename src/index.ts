@@ -98,6 +98,8 @@ function processAnimations(animations: number[][]) {
         setTimeout(() => {
             const columnAHeight = columnA.style.height;
             const columnBHeight = columnB.style.height;
+            const columnAValue = columnA.getAttribute('data-value');
+            const columnBValue = columnB.getAttribute('data-value');
 
             columnA.style.height = columnBHeight;
             columnB.style.height = columnAHeight;
@@ -105,6 +107,8 @@ function processAnimations(animations: number[][]) {
             columnA.style.backgroundColor = SWAPPED_COLOR;
             columnB.style.backgroundColor = SWAPPED_COLOR;
 
+            columnA.dataset.value = columnBValue;
+            columnB.dataset.value = columnAValue;
         }, (i + 1) * DELAY);
     }
 }
