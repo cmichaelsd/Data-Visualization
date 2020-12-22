@@ -1,3 +1,9 @@
+/**
+ * Sorts a number array and uses a callback function to perserve animation information. 
+ * 
+ * @param arr number[]
+ * @param cb (a: number, b: number) => void
+ */
 function bubbleSort(arr: number[], cb: (a: number, b: number) => void) {
     // For the number of elements (0 based index). 
     for (let i = 0; i < arr.length-1; ++i) {

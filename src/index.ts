@@ -6,7 +6,7 @@
  */
 function generateColumns(columns: number) {
     /**
-     * Becomes too difficult to see columns when width is (1000 / 500+)
+     * Becomes too difficult to see columns when width is (1000 / 100+)
      * also columns should not be a negative number. 
      */
     if (columns < 5 || columns > 100) {
@@ -137,10 +137,11 @@ function beginSorting() {
     const animations: number[][] = [];
     const selectMenu: HTMLSelectElement = document.getElementById('sortingMethod') as HTMLSelectElement;
     const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
-    let sortFunction = null;
+    let sortFunction: (arr: number[], cb: (a: number, b: number) => void) => void = null;
 
     switch(selectMethod) {
         case 'bubbleSort':
+        case 'quickSort':
             sortFunction = window[selectMethod];
             break;
         default:
