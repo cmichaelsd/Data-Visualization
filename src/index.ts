@@ -196,9 +196,20 @@ function beginSorting() {
 
 /**
  * Regenerates columns with current range value when selected sorting 
- * method changes. 
+ * method changes and columns are currently sorted. 
  */
 function onSelectChange() {
+    const arr: number[] = nodeListToNumberArray();
+
+    if (checkIfSorted(arr)) {
+        regenerateColumns();
+    }
+}
+
+/**
+ * Regenerates columns with current range value. 
+ */
+function regenerateColumns() {
     const currentNumberOfColumns: number = Number((document.getElementById('columnAmount') as HTMLSelectElement).value);
     
     generateColumns(currentNumberOfColumns);
