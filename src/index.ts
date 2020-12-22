@@ -34,6 +34,23 @@ function generateColumns(columns: number) {
 }
 
 /**
+ * Returns a boolean of true is an array is sorted and false if it is not. 
+ * 
+ * @param arr number[]
+ * @return boolean
+ */
+function checkIfSorted(arr: number[]): boolean {
+
+    for (let i = 0; i < arr.length-1; ++i) {
+        if (arr[i] > arr[i+1]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
  * Returns a number inclusively within a min and max range. 
  * 
  * @param min number 
@@ -139,6 +156,7 @@ function beginSorting() {
     const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
     let sortFunction: (arr: number[], cb: (a: number, b: number) => void) => void = null;
 
+
     switch(selectMethod) {
         case 'bubbleSort':
         case 'quickSort':
@@ -149,11 +167,13 @@ function beginSorting() {
             return;
     }
 
-    sortFunction(arr, (a: number, b: number) => {
-        animations.push([a, b]);
-    });
-    
-    processAnimations(animations);
+    if (!checkIfSorted(arr)) {
+        sortFunction(arr, (a: number, b: number) => {
+            animations.push([a, b]);
+        });
+        
+        processAnimations(animations);
+    }
 }
 
 /**
