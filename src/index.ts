@@ -9,7 +9,7 @@ function generateColumns(columns: number) {
      * Becomes too difficult to see columns when width is (1000 / 100+)
      * also columns should not be a negative number. 
      */
-    if (columns < 5 || columns > 100) {
+    if (columns < 5 || columns > 100 || columns === undefined || columns === null) {
         return;
     }
 
@@ -151,6 +151,10 @@ function processAnimations(animations: number[][]) {
  * @return boolean 
  */
 function checkNumberArrayIsSorted(arr: number[]): boolean {
+    if (arr === undefined || arr === null) {
+        return false;
+    }
+
     if (arr.length <= 1) {
         return true;
     }

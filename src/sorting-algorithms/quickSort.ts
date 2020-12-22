@@ -41,7 +41,7 @@ function partition(
  * @param cb (a: number, b: number) => void
  */
 function quickSort(arr, cb: (a: number, b: number) => void) {
-    if (arr.length <= 1) {
+    if (arr.length <= 1 || arr === undefined || arr === null) {
         return;
     }
     

@@ -5,7 +5,7 @@
  * @param cb (a: number, b: number) => void
  */
 function bubbleSort(arr: number[], cb: (a: number, b: number) => void) {
-    if (arr.length <= 1) {
+    if (arr.length <= 1 || arr === undefined || arr === null) {
         return;
     }
 
