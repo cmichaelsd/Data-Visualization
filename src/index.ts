@@ -13,17 +13,17 @@ function generateColumns(columns: number) {
         return;
     }
 
-    const sortingContainer = document.getElementById('sortingContainer');
-    const MIN_COLUMN_HEIGHT = 1;
-    const MAX_COLUMN_HEIGHT = sortingContainer.offsetHeight;
-    const SORTING_CONTAINER_WIDTH = sortingContainer.offsetWidth;
+    const sortingContainer: HTMLElement = document.getElementById('sortingContainer');
+    const MIN_COLUMN_HEIGHT: number = 1;
+    const MAX_COLUMN_HEIGHT: number = sortingContainer.offsetHeight;
+    const SORTING_CONTAINER_WIDTH: number = sortingContainer.offsetWidth;
 
     // Clear currently existing columns if they exist. 
     sortingContainer.innerHTML = "";
 
     for (let i = 0; i < columns; ++i) {
-        const column = document.createElement('div');
-        const value = generateRandomNumber(MIN_COLUMN_HEIGHT, MAX_COLUMN_HEIGHT);
+        const column: HTMLElement = document.createElement('div');
+        const value: number = generateRandomNumber(MIN_COLUMN_HEIGHT, MAX_COLUMN_HEIGHT);
 
         column.className = 'column';
         column.style.width = `${SORTING_CONTAINER_WIDTH / columns}px`;
@@ -40,7 +40,7 @@ function generateColumns(columns: number) {
  * @param max number 
  * @return number 
  */
-function generateRandomNumber(min: number, max: number) {
+function generateRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -50,11 +50,11 @@ function generateRandomNumber(min: number, max: number) {
  * @return number[]
  */
 function nodeListToNumberArray(): number[] {
-    const columns = document.getElementsByClassName('column');
+    const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
     const arr: number[] = [];
 
     for (let i = 0; i < columns.length; ++i) {
-        const value = Number(columns[i].getAttribute('data-value'));
+        const value: number = Number(columns[i].getAttribute('data-value'));
     
         arr.push(value);
     }
@@ -68,15 +68,15 @@ function nodeListToNumberArray(): number[] {
  * @param arr number[][]
  */
 function processAnimations(animations: number[][]) {
-    const DELAY = 20;
-    const SWAPPING_COLOR = 'orchid';
-    const SWAPPED_COLOR = 'lightcoral';
-    const columns = document.getElementsByClassName('column');
+    const DELAY: number = 20;
+    const SWAPPING_COLOR: string = 'orchid';
+    const SWAPPED_COLOR: string = 'lightcoral';
+    const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
     
     for (let i = 0; i < animations.length; ++i) {
         const [ a, b ] = animations[i];
-        const columnA = columns[a] as HTMLElement;
-        const columnB = columns[b] as HTMLElement;
+        const columnA: HTMLElement = columns[a] as HTMLElement;
+        const columnB: HTMLElement = columns[b] as HTMLElement;
 
         /**
          * Highlight columns to be swapped with swapping color, delay 
@@ -84,10 +84,8 @@ function processAnimations(animations: number[][]) {
          * a fixed amount of time. 
          */
         setTimeout(() => {
-
             columnA.style.backgroundColor = SWAPPING_COLOR;
             columnB.style.backgroundColor = SWAPPING_COLOR;
-            
         }, i * DELAY);
 
         /**
@@ -96,10 +94,10 @@ function processAnimations(animations: number[][]) {
          * first animation; allow users to understand visually what is going on. 
          */
         setTimeout(() => {
-            const columnAHeight = columnA.style.height;
-            const columnBHeight = columnB.style.height;
-            const columnAValue = columnA.getAttribute('data-value');
-            const columnBValue = columnB.getAttribute('data-value');
+            const columnAHeight: string = columnA.style.height;
+            const columnBHeight: string = columnB.style.height;
+            const columnAValue: string = columnA.getAttribute('data-value');
+            const columnBValue: string = columnB.getAttribute('data-value');
 
             columnA.style.height = columnBHeight;
             columnB.style.height = columnAHeight;
@@ -137,8 +135,8 @@ function checkNumberArrayIsSorted(arr: number[]): boolean {
 function beginSorting() {
     const arr: number[] = nodeListToNumberArray();
     const animations: number[][] = [];
-    const selectMenu = document.getElementById('sortingMethod') as HTMLSelectElement;
-    const selectMethod = selectMenu.options[selectMenu.selectedIndex].value;
+    const selectMenu: HTMLSelectElement = document.getElementById('sortingMethod') as HTMLSelectElement;
+    const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
     let sortFunction = null;
 
     switch(selectMethod) {
@@ -162,9 +160,9 @@ function beginSorting() {
  * method changes. 
  */
 function onSelectChange() {
-    const range = document.getElementById('columnAmount');
-
-    console.log(range);
+    const currentNumberOfColumns: number = Number((document.getElementById('columnAmount') as HTMLSelectElement).value);
+    
+    generateColumns(currentNumberOfColumns);
 }
 
 /**

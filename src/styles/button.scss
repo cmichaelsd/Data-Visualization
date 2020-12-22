@@ -7,7 +7,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1rem;
+    font-size: v.$font-size-1;
     &:hover {
         background-color: v.$base-color-two;
     }
