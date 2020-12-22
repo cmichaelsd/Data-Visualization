@@ -21,7 +21,7 @@ function generateColumns(columns: number) {
     // Clear currently existing columns if they exist. 
     sortingContainer.innerHTML = "";
 
-    for (let i = 0; i < columns; ++i) {
+    for (let i: number = 0; i < columns; ++i) {
         const column: HTMLElement = document.createElement('div');
         const value: number = generateRandomNumber(MIN_COLUMN_HEIGHT, MAX_COLUMN_HEIGHT);
 
@@ -41,7 +41,7 @@ function generateColumns(columns: number) {
  */
 function checkIfSorted(arr: number[]): boolean {
 
-    for (let i = 0; i < arr.length-1; ++i) {
+    for (let i: number = 0; i < arr.length-1; ++i) {
         if (arr[i] > arr[i+1]) {
             return false;
         }
@@ -70,7 +70,7 @@ function nodeListToNumberArray(): number[] {
     const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
     const arr: number[] = [];
 
-    for (let i = 0; i < columns.length; ++i) {
+    for (let i: number = 0; i < columns.length; ++i) {
         const value: number = Number(columns[i].getAttribute('data-value'));
     
         arr.push(value);
@@ -90,7 +90,7 @@ function processAnimations(animations: number[][]) {
     const SWAPPED_COLOR: string = 'lightcoral';
     const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
     
-    for (let i = 0; i < animations.length; ++i) {
+    for (let i: number = 0; i < animations.length; ++i) {
         const [ a, b ] = animations[i];
         const columnA: HTMLElement = columns[a] as HTMLElement;
         const columnB: HTMLElement = columns[b] as HTMLElement;
@@ -137,7 +137,7 @@ function processAnimations(animations: number[][]) {
  */
 function checkNumberArrayIsSorted(arr: number[]): boolean {
 
-    for (let i = 0; i < arr.length-1; ++i) {
+    for (let i: number = 0; i < arr.length-1; ++i) {
         if (arr[i] > arr[i+1]) {
             return false;
         }

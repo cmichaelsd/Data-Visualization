@@ -14,10 +14,10 @@ function partition(
     high: number, 
     cb: (a: number, b: number) => void
 ): number {
-    const x = arr[high];
-    let i = (low - 1);
+    const x: number = arr[high];
+    let i: number = (low - 1);
 
-    for (let j = low; j <= high-1; ++j) {
+    for (let j: number = low; j <= high-1; ++j) {
         if (arr[j] <= x) {
             ++i;
 
