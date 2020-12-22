@@ -5,6 +5,10 @@
  * @param cb (a: number, b: number) => void
  */
 function bubbleSort(arr: number[], cb: (a: number, b: number) => void) {
+    if (arr.length <= 1) {
+        return;
+    }
+
     // For the number of elements (0 based index). 
     for (let i: number = 0; i < arr.length-1; ++i) {
         let swapped: boolean = false;

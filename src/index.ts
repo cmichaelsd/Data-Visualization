@@ -40,6 +40,13 @@ function generateColumns(columns: number) {
  * @return boolean
  */
 function checkIfSorted(arr: number[]): boolean {
+    if (arr === null || arr === undefined) {
+        return false;
+    }
+    
+    if (arr.length <= 1) {
+        return true;
+    }
 
     for (let i: number = 0; i < arr.length-1; ++i) {
         if (arr[i] > arr[i+1]) {
@@ -70,6 +77,10 @@ function nodeListToNumberArray(): number[] {
     const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
     const arr: number[] = [];
 
+    if (columns.length === 0) {
+        return arr;
+    }
+
     for (let i: number = 0; i < columns.length; ++i) {
         const value: number = Number(columns[i].getAttribute('data-value'));
     
@@ -85,6 +96,10 @@ function nodeListToNumberArray(): number[] {
  * @param arr number[][]
  */
 function processAnimations(animations: number[][]) {
+    if (animations.length === 0 || animations === undefined || animations === null) {
+        return;
+    }
+
     const DELAY: number = 20;
     const SWAPPING_COLOR: string = 'orchid';
     const SWAPPED_COLOR: string = 'lightcoral';
@@ -136,6 +151,9 @@ function processAnimations(animations: number[][]) {
  * @return boolean 
  */
 function checkNumberArrayIsSorted(arr: number[]): boolean {
+    if (arr.length <= 1) {
+        return true;
+    }
 
     for (let i: number = 0; i < arr.length-1; ++i) {
         if (arr[i] > arr[i+1]) {

@@ -41,6 +41,10 @@ function partition(
  * @param cb (a: number, b: number) => void
  */
 function quickSort(arr, cb: (a: number, b: number) => void) {
+    if (arr.length <= 1) {
+        return;
+    }
+    
     // Create an auxiliary stack
     const stack: number[] = [];
     let low: number = 0;
