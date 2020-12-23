@@ -3,6 +3,7 @@
  */
 function beginSorting(): void {
     const arr: number[] = nodeListToNumberArray();
+    const iterationAnimations: SortAnimationAction[] = [];
     const swapAnimations: SortAnimationAction[] = [];
     const selectMenu: HTMLSelectElement = document.getElementById('sortingMethod') as HTMLSelectElement;
     const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
@@ -21,15 +22,15 @@ function beginSorting(): void {
 
     if (!checkNumberArrayIsSorted(arr)) {
         sortFunction(arr, (data: SortAnimationAction) => {
-            // why build animations and then process
-            // if I do this in real time i can animate all situations
-            // in realtime
             if (data.action === 'swap') {
                 swapAnimations.push(data);
                 processSwapAnimations(data.payload, swapAnimations.length - 1);
             }
+
+            if (data.action === 'iteration') {
+                iterationAnimations.push(data);
+                processIterationAnimations(iterationAnimations.length - 1);
+            }
         });
-        
-        // processAnimations(animations);
     }
 }

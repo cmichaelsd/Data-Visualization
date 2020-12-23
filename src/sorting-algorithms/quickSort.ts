@@ -21,13 +21,24 @@ function partition(
         if (arr[j] <= x) {
             ++i;
 
-            // cb(i, j);
+            cb({
+                action: "swap",
+                payload: [i, j]
+            });
+
+            cb({
+                action: "iteration",
+                payload: null
+            });
 
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
     }
 
-    // cb(i+1, high);
+    cb({
+        action: "swap",
+        payload: [i+1, high]
+    });
 
     [arr[i+1], arr[high]] = [arr[high], arr[i+1]];
 
