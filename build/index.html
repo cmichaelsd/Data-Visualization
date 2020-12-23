@@ -10,6 +10,11 @@
 
 <body>
     <div id="appContainer">
+        <div id="countContainer">
+            <span id="iterationCount">0</span>
+            <br>
+            <span id="swapCount">0</span>
+        </div>
         <div id="sortingContainer"></div>
         <footer id="footer">
             <div style="display: flex;">
@@ -32,8 +37,25 @@
             </div>
         </footer>
     </div>
+
+    <!-- Sorting -->
     <script src="./sorting-algorithms/quickSort.js"></script>
     <script src="./sorting-algorithms/bubbleSort.js"></script>
+
+    <!-- User Actions -->
+    <script src="./listeners/columnAmountChanged.js"></script>
+    <script src="./listeners/sortingMethodChanged.js"></script>
+    <script src="./listeners/beginSortingPressed.js"></script>
+    <script src="./listeners/regenerateColumnsPressed.js"></script>
+
+    <!-- Animation -->
+    <script src="./animations/iterationAnimation.js"></script>
+    <script src="./animations/swapAnimation.js"></script>
+
+    <!-- Helpers -->
+    <script src="./helpers/index.js"></script>
+
+    <!-- Driver -->
     <script src="./index.js"></script>
 </body>
 

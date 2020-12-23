@@ -5,14 +5,14 @@
  * @param arr number[]
  * @param low number
  * @param high number
- * @param cb (a: number, b: number) => void
+ * @param cb (data: SortAnimationAction) => void
  * @return number
  */
 function partition(
     arr: number[], 
     low: number, 
     high: number, 
-    cb: (a: number, b: number) => void
+    cb: (data: SortAnimationAction) => void
 ): number {
     const x: number = arr[high];
     let i: number = (low - 1);
@@ -21,13 +21,13 @@ function partition(
         if (arr[j] <= x) {
             ++i;
 
-            cb(i, j);
+            // cb(i, j);
 
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
     }
 
-    cb(i+1, high);
+    // cb(i+1, high);
 
     [arr[i+1], arr[high]] = [arr[high], arr[i+1]];
 
@@ -38,9 +38,9 @@ function partition(
  * Sorts a number array and uses a callback function to perserve animation information. 
  * 
  * @param arr number[]
- * @param cb (a: number, b: number) => void
+ * @param cb (data: SortAnimationAction) => void
  */
-function quickSort(arr, cb: (a: number, b: number) => void) {
+function quickSort(arr, cb: (data: SortAnimationAction) => void) {
     if (arr.length <= 1 || arr === undefined || arr === null) {
         return;
     }
