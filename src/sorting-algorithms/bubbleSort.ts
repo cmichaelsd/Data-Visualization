@@ -26,10 +26,7 @@ function bubbleSort(arr: number[], cb: SortingCallback): void {
                 [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
             }
             
-            cb({
-                action: "iteration",
-                payload: null
-            });
+            cb({ action: "iteration" });
         }
 
         if (!swapped) {
