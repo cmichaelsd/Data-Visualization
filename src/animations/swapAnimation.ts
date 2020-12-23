@@ -4,7 +4,7 @@
  * @param animationsTuple NumberTupleLengthTwo
  * @param animationIndex number
  */
-function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationIndex: number) {
+function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationIndex: number): void {
     if (animationsTuple === undefined || animationsTuple === null || animationIndex < 0) {
         return;
     }

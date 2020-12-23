@@ -4,7 +4,7 @@
  * 
  * @param number columns
  */
-function generateColumns(columns: number) {
+function generateColumns(columns: number): void {
     /**
      * Becomes too difficult to see columns when width is (1000 / 100+)
      * also columns should not be a negative number. 

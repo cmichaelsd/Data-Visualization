@@ -1,7 +1,7 @@
 /**
  * Begins sorting with currently selected sorting method. 
  */
-function beginSorting() {
+function beginSorting(): void {
     const arr: number[] = nodeListToNumberArray();
     const swapAnimations: SortAnimationAction[] = [];
     const selectMenu: HTMLSelectElement = document.getElementById('sortingMethod') as HTMLSelectElement;

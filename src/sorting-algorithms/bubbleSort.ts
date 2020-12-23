@@ -2,9 +2,9 @@
  * Sorts a number array and uses a callback function to perserve animation information. 
  * 
  * @param arr number[]
- * @param cb (data: SortAnimationAction) => void
+ * @param cb SortingCallback
  */
-function bubbleSort(arr: number[], cb: (data: SortAnimationAction) => void) {
+function bubbleSort(arr: number[], cb: SortingCallback): void {
     if (arr.length <= 1 || arr === undefined || arr === null) {
         return;
     }

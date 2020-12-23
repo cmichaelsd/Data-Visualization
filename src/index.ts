@@ -12,6 +12,8 @@ interface SortAnimationAction {
 /**
  * Driver function for the program. 
  */
-(function main() {
+(function main(): number {
     generateColumns(10);
+
+    return 0;
 })();
