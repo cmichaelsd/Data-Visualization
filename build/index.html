@@ -19,8 +19,13 @@
         </div>
         <div id="sortingContainer"></div>
         <footer id="footer">
-            <div style="display: flex;">
+            <div style="display: flex; flex-direction: column;">
+                <span>Columns</span>
                 <input id="columnAmount" class="slider" type="range" min="5" max="100" value="10" oninput="generateColumns(this.value)">
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <div>Delay</div>
+                <input id="delayAmount" class="slider" type="range" min="5" max="30" value="20" oninput="changeDelayAmount(this.value)">
             </div>
             <div>
                 <div class="select-menu">
@@ -46,6 +51,7 @@
 
     <!-- User Actions -->
     <script src="./actions/columnAmountChanged.js"></script>
+    <script src="./actions/delayAmountChanged.js"></script>
     <script src="./actions/sortingMethodChanged.js"></script>
     <script src="./actions/beginSortingPressed.js"></script>
     <script src="./actions/regenerateColumnsPressed.js"></script>

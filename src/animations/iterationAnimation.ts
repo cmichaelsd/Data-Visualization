@@ -3,18 +3,27 @@
  * 
  * @param iteration number 
  */
-function processIterationAnimations(iteration: number): void {
-    if (iteration < 0) {
+function processIterationAnimations(iterations: NumberTupleLengthTwo[][]): void {
+    if (iterations.length < 0) {
         return;
     }
 
-    const DELAY: number = 20;
     const iterationCount: HTMLElement = document.getElementById('iterationCount');
     
     /**
      * Update iteration counter as the iterations come in from the sorting handler. 
      */
-    setTimeout((): void => {
-        iterationCount.textContent = `${iteration}`;
-    }, iteration * DELAY);
+    for (let iteration: number = 0; iteration < iterations.length; ++iteration) {
+        setTimeout((): void => {
+            const bucket = iterations[iteration];
+
+            for (let tupleIndex: number = 0; tupleIndex < bucket.length; ++tupleIndex) {
+                const tuple = bucket[tupleIndex];
+
+                processSwapAnimations(tuple, iteration);
+            }
+
+            iterationCount.textContent = `${iteration}`;
+        }, (iteration + 1) * global.delay);
+    }
 }

@@ -9,7 +9,6 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationI
         return;
     }
 
-    const DELAY: number = 20;
     const SWAPPING_COLOR: string = 'orchid';
     const SWAPPED_COLOR: string = 'lightcoral';
     const swapCount: HTMLElement = document.getElementById('swapCount');
@@ -28,7 +27,7 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationI
     setTimeout((): void => {
         columnA.style.backgroundColor = SWAPPING_COLOR;
         columnB.style.backgroundColor = SWAPPING_COLOR;
-    }, animationIndex * DELAY);
+    }, animationIndex * global.delay);
 
     /**
      * Highlight columns which have been swapped with swapped colors, delay 
@@ -51,5 +50,5 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationI
         columnB.dataset.value = columnAValue;
 
         swapCount.textContent = `${animationIndex}`;
-    }, (animationIndex + 1) * DELAY);
+    }, (animationIndex + 1) * global.delay);
 }

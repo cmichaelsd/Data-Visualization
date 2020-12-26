@@ -3,8 +3,7 @@
  */
 function beginSorting(): void {
     const arr: number[] = nodeListToNumberArray();
-    const iterationAnimations: SortAnimationAction[] = [];
-    const swapAnimations: SortAnimationAction[] = [];
+    const iterations: NumberTupleLengthTwo[][] = [];
     const selectMenu: HTMLSelectElement = document.getElementById('sortingMethod') as HTMLSelectElement;
     const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
     let sortFunction: SortingFunction = null;
@@ -22,15 +21,49 @@ function beginSorting(): void {
 
     if (!checkNumberArrayIsSorted(arr)) {
         sortFunction(arr, (data: SortAnimationAction) => {
-            if (data.action === 'swap') {
-                swapAnimations.push(data);
-                processSwapAnimations(data.payload, swapAnimations.length - 1);
+            /**
+             * Will record each iteration
+             * Not every iteration will include a swapping of values
+             * 
+             * Could build an array, index is iteration
+             * Swap order isnt always based on iteration variable (let i = 0)
+             * 
+             * I.E. 
+             * let i = 0;
+             * let j = 0;
+             * for i is 1 {
+             *     for j is 9 {
+             *         swap() iteration: 9 swap: [2,3]
+             *     }
+             *     swap() iteration: 9 swap: [4,5]
+             * }
+             * 
+             * Nested swaps should happen before swap after nested for loop, if based on iteration variable (let i = 0)
+             * this would happen out of order.
+             * 
+             * For sake of animation this swap should happen with the last declared iteration (let j = 0)
+             * so animation happens in order and iterations are still the correct number.
+             * 
+             * Solution: hoist for loop iteration variable declaration, access nested for loop iteration variable in parent scope
+             * and append parent swap to same iteration of previous child for loop variable.
+             * Issue: The above solution isnt true, j will reset to zero, there must be a running total of all iterations
+             * Solution: I could always push to iterations at head of nested loop and then append at the last index of iterations
+             * array
+             */
+
+            
+
+            // Iterations will always happen before a swap. a blank array will always exist for swap tuples
+            if (data.action === "iteration") {
+                iterations.push([]);
             }
 
-            if (data.action === 'iteration') {
-                iterationAnimations.push(data);
-                processIterationAnimations(iterationAnimations.length - 1);
+            // Push swap tuples to their iteration
+            if (data.action === "swap") {
+                iterations[iterations.length-1].push(data.payload);
             }
         });
+        
+        processIterationAnimations(iterations);
     }
 }

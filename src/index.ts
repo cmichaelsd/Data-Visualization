@@ -9,6 +9,10 @@ interface SortAnimationAction {
     payload?: NumberTupleLengthTwo;
 };
 
+let global = {
+    delay: Number((document.getElementById('delayAmount') as HTMLInputElement).value)
+};
+
 /**
  * Driver function for the program. 
  */
