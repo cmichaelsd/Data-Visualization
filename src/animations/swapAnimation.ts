@@ -4,8 +4,8 @@
  * @param animationsTuple NumberTupleLengthTwo
  * @param animationIndex number
  */
-function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationIndex: number): void {
-    if (animationsTuple === undefined || animationsTuple === null || animationIndex < 0) {
+function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationDelay: number, totalSwaps: number): void {
+    if (animationsTuple === undefined || animationsTuple === null || animationDelay < 0) {
         return;
     }
 
@@ -27,7 +27,7 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationI
     setTimeout((): void => {
         columnA.style.backgroundColor = SWAPPING_COLOR;
         columnB.style.backgroundColor = SWAPPING_COLOR;
-    }, animationIndex * global.delay);
+    }, animationDelay);
 
     /**
      * Highlight columns which have been swapped with swapped colors, delay 
@@ -49,6 +49,6 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationI
         columnA.dataset.value = columnBValue;
         columnB.dataset.value = columnAValue;
 
-        swapCount.textContent = `${animationIndex}`;
-    }, (animationIndex + 1) * global.delay);
+        swapCount.textContent = `${totalSwaps}`;
+    }, animationDelay + 1);
 }
