@@ -8,18 +8,20 @@ function processIterationAnimations(iterations: NumberTupleLengthTwo[][]): void 
         return;
     }
 
-    const DELAY = 20;
+    const DELAY: number = 20;
     const iterationCount: HTMLElement = document.getElementById('iterationCount');
-    let previousIterationDelay = 0;
-    let totalSwaps = 0;
+    let previousIterationDelay: number = 0;
+    let totalSwaps: number = 0;
     
     /**
      * Update iteration counter as the iterations come in from the sorting handler. 
      */
     for (let iteration: number = 0; iteration < iterations.length; ++iteration) {
-        const bucket = iterations[iteration];
-        const delayCalc = iteration + bucket.length;
-        const currentIterationDelay = (delayCalc < previousIterationDelay) ? previousIterationDelay : delayCalc;
+        const bucket: NumberTupleLengthTwo[] = iterations[iteration];
+        const delayCalc: number = iteration + bucket.length;
+        const currentIterationDelay: number = (delayCalc < previousIterationDelay) ? (previousIterationDelay + 1) : delayCalc;
+
+        previousIterationDelay = currentIterationDelay;
 
         /**
          * Issue: Can not just declare timeout as iteration + bucket.length it will result
@@ -39,10 +41,16 @@ function processIterationAnimations(iterations: NumberTupleLengthTwo[][]): void 
          */
         setTimeout((): void => {
             for (let tupleIndex: number = 0; tupleIndex < bucket.length; ++tupleIndex) {
-                const tuple = bucket[tupleIndex];
+                const tuple: NumberTupleLengthTwo = bucket[tupleIndex];
+                const swapAnimationDelay: number = iteration + tupleIndex;
+
                 ++totalSwaps;
 
-                processSwapAnimations(tuple, (iteration + tupleIndex) * DELAY, totalSwaps);
+                /**
+                 * Due to the nature of nested setTimeouts all that matters is that the parent setTimeouts greater than the previous
+                 * the children of the parent timeout can be and incremental value and will fire before the next parent timeout is called.
+                 */
+                processSwapAnimations(tuple, swapAnimationDelay, totalSwaps);
             }
 
             iterationCount.textContent = `${iteration}`;
