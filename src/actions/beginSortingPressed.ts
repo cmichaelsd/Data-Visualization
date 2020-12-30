@@ -3,7 +3,6 @@
  */
 function beginSorting(): void {
     const arr: number[] = nodeListToNumberArray();
-    const iterations: NumberTupleLengthTwo[][] = [];
     const selectMenu: HTMLSelectElement = document.getElementById('sortingMethod') as HTMLSelectElement;
     const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
     let sortFunction: SortingFunction = null;
@@ -20,7 +19,6 @@ function beginSorting(): void {
     }
 
     if (!checkNumberArrayIsSorted(arr)) {
-
         // Disable begin sorting button.
         toggleButtonDisabled('beginSortingButton', true);
         // Begin selected sort function on columns. 
@@ -55,19 +53,9 @@ function beginSorting(): void {
              * array
              */
 
-            
-
-            // Iterations will always happen before a swap. a blank array will always exist for swap tuples
-            if (data.action === "iteration") {
-                iterations.push([]);
-            }
-
-            // Push swap tuples to their iteration
-            if (data.action === "swap") {
-                iterations[iterations.length-1].push(data.payload);
-            }
+            setIterations(data);
         });
         
-        processIterationAnimations(iterations);
+        processIterationAnimations();
     }
 }

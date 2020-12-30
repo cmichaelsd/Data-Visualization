@@ -9,7 +9,6 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         return;
     }
 
-    const DELAY: number = 20;
     const SWAPPING_COLOR: string = 'tomato';
     const SWAPPED_COLOR: string = 'deepskyblue';
     const swapCount: HTMLElement = document.getElementById('swapCount');
@@ -24,17 +23,17 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
      * animation by i * 10 so each animation happens after the next by
      * a fixed amount of time. 
      */
-    setTimeout((): void => {
+    setTimeoutIds(setTimeout((): void => {
         columnA.style.backgroundColor = SWAPPING_COLOR;
         columnB.style.backgroundColor = SWAPPING_COLOR;
-    }, animationDelay * DELAY);
+    }, animationDelay * globalState.delay));
 
     /**
      * Highlight columns which have been swapped with swapped colors, delay 
      * animation by (i + 1) * 10 so animations happen a fixed time after the 
      * first animation; allow users to understand visually what is going on. 
      */
-    setTimeout((): void => {
+    setTimeoutIds(setTimeout((): void => {
         const columnAHeight: string = columnA.style.height;
         const columnBHeight: string = columnB.style.height;
         const columnAValue: string = columnA.getAttribute('data-value');
@@ -50,5 +49,5 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         columnB.dataset.value = columnAValue;
 
         swapCount.textContent = `${totalSwaps}`;
-    }, (animationDelay + 1) * DELAY);
+    }, (animationDelay + 1) * globalState.delay));
 }

@@ -1,14 +1,13 @@
 /**
  * Processes animations for each iteration.
- * 
- * @param iteration number 
  */
-function processIterationAnimations(iterations: NumberTupleLengthTwo[][]): void {
+function processIterationAnimations(): void {
+    const iterations: NumberTupleLengthTwo[][] = globalState.iterations;
+    
     if (iterations.length < 0) {
         return;
     }
 
-    const DELAY: number = 20;
     const iterationCount: HTMLElement = document.getElementById('iterationCount');
     let previousIterationDelay: number = 0;
     let totalSwaps: number = 0;
@@ -39,7 +38,7 @@ function processIterationAnimations(iterations: NumberTupleLengthTwo[][]): void 
          * if I want to animate a pulse for swapless iteration I should make previous + 2 or 3 and animate a flash on
          * all columns indicating nothing happened for the user during this iteration.
          */
-        setTimeout((): void => {
+        setTimeoutIds(setTimeout((): void => {
             for (let tupleIndex: number = 0; tupleIndex < bucket.length; ++tupleIndex) {
                 const tuple: NumberTupleLengthTwo = bucket[tupleIndex];
                 const swapAnimationDelay: number = iteration + tupleIndex;
@@ -58,6 +57,6 @@ function processIterationAnimations(iterations: NumberTupleLengthTwo[][]): void 
             }
 
             iterationCount.textContent = `${iteration}`;
-        }, currentIterationDelay * DELAY);
+        }, currentIterationDelay * globalState.delay));
     }
 }
