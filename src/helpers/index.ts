@@ -55,3 +55,19 @@ function checkNumberArrayIsSorted(arr: number[]): boolean {
 
     return true;
 }
+
+/**
+ * A buttons disabled state is set to the given boolean state.
+ * 
+ * @param id string
+ * @param state boolean
+ */
+function toggleButtonDisabled(id: string, state: boolean): void {
+    if (id === null || id === undefined || state === null || state === undefined) {
+        return;
+    }
+
+    const button: HTMLButtonElement = document.getElementById(id) as HTMLButtonElement;
+
+    button.disabled = state;
+}

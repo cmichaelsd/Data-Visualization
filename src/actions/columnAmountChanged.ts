@@ -26,6 +26,8 @@ function generateColumns(columns: number): void {
     swapCount.textContent = '0';
     // Clear currently existing columns. 
     sortingContainer.innerHTML = '';
+    // Enable begin sort button.
+    toggleButtonDisabled('beginSortingButton', false);
 
     for (let i: number = 0; i < columns; ++i) {
         const column: HTMLElement = document.createElement('div');

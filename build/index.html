@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,10 +33,10 @@
                 </div>
             </div>
             <div>
-                <button class="button" onclick="beginSorting()">Begin Sorting</button>
+                <button id="beginSortingButton" class="button" onclick="beginSorting()">Begin Sorting</button>
             </div>
             <div>
-                <button class="button" onclick="regenerateColumns()">Scramble Columns</button>
+                <button id="scrambleColumnsButton" class="button" onclick="regenerateColumns()">Scramble Columns</button>
             </div>
         </footer>
     </div>
@@ -47,7 +47,6 @@
 
     <!-- User Actions -->
     <script src="./actions/columnAmountChanged.js"></script>
-    <script src="./actions/delayAmountChanged.js"></script>
     <script src="./actions/sortingMethodChanged.js"></script>
     <script src="./actions/beginSortingPressed.js"></script>
     <script src="./actions/regenerateColumnsPressed.js"></script>

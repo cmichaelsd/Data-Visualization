@@ -20,6 +20,10 @@ function beginSorting(): void {
     }
 
     if (!checkNumberArrayIsSorted(arr)) {
+
+        // Disable begin sorting button.
+        toggleButtonDisabled('beginSortingButton', true);
+        // Begin selected sort function on columns. 
         sortFunction(arr, (data: SortAnimationAction) => {
             /**
              * Will record each iteration
