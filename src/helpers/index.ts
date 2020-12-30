@@ -71,3 +71,15 @@ function toggleButtonDisabled(id: string, state: boolean): void {
 
     button.disabled = state;
 }
+
+/**
+ * Clears application state to avoid animation errors and resets button disabled property.
+ */
+function clearApplication() {
+    // Enable begin sort button. 
+    toggleButtonDisabled('beginSortingButton', false);
+    // Clear any iterations from queue if they exist.
+    clearIterations();
+    // Clear all pending and running timeouts.
+    clearTimeoutids();
+}
