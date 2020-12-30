@@ -8,7 +8,7 @@
         color: white;
         border: 0;
         &:hover {
-            background-color: mix(v.$base-color-one, v.$base-color-two, 40%);
+            background-color: mix(v.$base-color-one, v.$base-color-two, 80%);
         }
     }
     .select-arrow {

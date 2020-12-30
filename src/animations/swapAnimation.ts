@@ -10,8 +10,8 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
     }
 
     const DELAY: number = 20;
-    const SWAPPING_COLOR: string = 'orchid';
-    const SWAPPED_COLOR: string = 'lightcoral';
+    const SWAPPING_COLOR: string = 'tomato';
+    const SWAPPED_COLOR: string = 'deepskyblue';
     const swapCount: HTMLElement = document.getElementById('swapCount');
     const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
 

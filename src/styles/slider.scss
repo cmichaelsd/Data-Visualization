@@ -25,9 +25,6 @@
         cursor: pointer;
         -webkit-appearance: none;
     }
-    &:focus::-webkit-slider-runnable-track {
-        background: #f5aeae;
-    }
     &::-moz-range-track {
         background: v.$base-color-one;
         border: 0.2px solid v.$border-color;
@@ -72,11 +69,5 @@
         cursor: pointer;
         margin-top: 0px;
         /*Needed to keep the Edge thumb centred*/
-    }
-    &:focus::-ms-fill-lower {
-        background: v.$base-color-one;
-    }
-    &:focus::-ms-fill-upper {
-        background: #f5aeae;
     }
 }

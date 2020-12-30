@@ -50,7 +50,11 @@ function processIterationAnimations(iterations: NumberTupleLengthTwo[][]): void 
                  * Due to the nature of nested setTimeouts all that matters is that the parent setTimeouts greater than the previous
                  * the children of the parent timeout can be and incremental value and will fire before the next parent timeout is called.
                  */
-                processSwapAnimations(tuple, swapAnimationDelay, totalSwaps);
+                if (bucket.length) {
+                    processSwapAnimations(tuple, swapAnimationDelay, totalSwaps);
+                } else {
+                    processSwaplessIterationAnimation();
+                }
             }
 
             iterationCount.textContent = `${iteration}`;
