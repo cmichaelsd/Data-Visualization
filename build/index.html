@@ -2,67 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Visualizer</title>
-    <link rel="stylesheet" type="text/css" href="./styles/index.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Data Visualizer</title>
+	<link rel="stylesheet" type="text/css" href="./styles/index.css">
 </head>
 
 <body>
-    <div id="appContainer">
-        <div id="countContainer">
-            <span>Iterations: </span>
-            <span id="iterationCount">0</span>
-            <br>
-            <span>Swaps: </span>
-            <span id="swapCount">0</span>
-        </div>
-        <div id="sortingContainer"></div>
-        <footer id="footer">
-            <div style="display: flex; flex-direction: column;">
-                <span>Columns</span>
-                <input id="columnAmount" class="slider" type="range" min="5" max="100" value="10" oninput="generateColumns(this.value)">
-            </div>
-            <div>
-                <div class="select-menu">
-                    <select id="sortingMethod" onchange="onSelectChange()">
-                        <option value="bubbleSort">Bubble Sort</option>
-                        <option value="quickSort">Quick Sort</option>
-                    </select>
-                    <span class="select-arrow"></span>
-                </div>
-            </div>
-            <div>
-                <button id="beginSortingButton" class="button" onclick="beginSorting()">Begin Sorting</button>
-            </div>
-            <div>
-                <button id="scrambleColumnsButton" class="button" onclick="regenerateColumns()">Scramble Columns</button>
-            </div>
-        </footer>
-    </div>
+	<div id="appContainer">
+		<div id="countContainer">
+			<div>
+				<span>Iterations: </span>
+				<span id="iterationCount">0</span>
+			</div>
+			<div>
+				<span>Swapless Iterations: </span>
+				<span id="swaplessCount">0</span>
+			</div>
+			<div>
+				<span>Swaps: </span>
+				<span id="swapCount">0</span>
+			</div>
+		</div>
+		<div id="sortingContainer"></div>
+		<footer id="footer">
+			<div style="display: flex; flex-direction: column;">
+				<span>Columns</span>
+				<input id="columnAmount" class="slider" type="range" min="5" max="100" value="10" oninput="generateColumns(this.value)">
+			</div>
+			<div>
+				<div class="select-menu">
+					<select id="sortingMethod" onchange="onSelectChange()">
+						<option value="bubbleSort">Bubble Sort</option>
+						<option value="quickSort">Quick Sort</option>
+					</select>
+					<span class="select-arrow"></span>
+				</div>
+			</div>
+			<div>
+				<button id="beginSortingButton" class="button" onclick="beginSorting()">Begin Sorting</button>
+			</div>
+			<div>
+				<button id="scrambleColumnsButton" class="button" onclick="regenerateColumns()">Scramble Columns</button>
+			</div>
+		</footer>
+	</div>
 
-    <!-- State -->
-    <script src="./state/index.js"></script>
+	<!-- State -->
+	<script src="./state/index.js"></script>
 
-    <!-- Sorting -->
-    <script src="./sorting-algorithms/quickSort.js"></script>
-    <script src="./sorting-algorithms/bubbleSort.js"></script>
+	<!-- Sorting -->
+	<script src="./sorting-algorithms/quickSort.js"></script>
+	<script src="./sorting-algorithms/bubbleSort.js"></script>
 
-    <!-- User Actions -->
-    <script src="./actions/columnAmountChanged.js"></script>
-    <script src="./actions/sortingMethodChanged.js"></script>
-    <script src="./actions/beginSortingPressed.js"></script>
-    <script src="./actions/regenerateColumnsPressed.js"></script>
+	<!-- User Actions -->
+	<script src="./actions/columnAmountChanged.js"></script>
+	<script src="./actions/sortingMethodChanged.js"></script>
+	<script src="./actions/beginSortingPressed.js"></script>
+	<script src="./actions/regenerateColumnsPressed.js"></script>
 
-    <!-- Animation -->
-    <script src="./animations/iterationAnimation.js"></script>
-    <script src="./animations/swapAnimation.js"></script>
+	<!-- Animation -->
+	<script src="./animations/iterationAnimation.js"></script>
+	<script src="./animations/swapAnimation.js"></script>
+	<script src="./animations/swaplessIterationAnimation.js"></script>
 
-    <!-- Helpers -->
-    <script src="./helpers/index.js"></script>
+	<!-- Helpers -->
+	<script src="./helpers/index.js"></script>
 
-    <!-- Driver -->
-    <script src="./index.js"></script>
+	<!-- Driver -->
+	<script src="./index.js"></script>
 </body>
 
 </html>

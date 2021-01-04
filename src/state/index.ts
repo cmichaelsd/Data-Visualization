@@ -31,10 +31,13 @@ function clearIterations(): void {
 /**
  * Pushes setTimeout ids to the global states timeoutIds queue.
  * 
- * @param id number
+ * @param cb () => void
+ * @param delay number
  */
-function setTimeoutIds(id: number): void {
-    globalState.timeoutIds.push(id);
+function setTimeoutIds(cb: any, delay: number): void {
+    const setTimeoutId = setTimeout(cb, delay * globalState.delay);
+
+    globalState.timeoutIds.push(setTimeoutId);
 }
 
 /**

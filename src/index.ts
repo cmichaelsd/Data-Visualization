@@ -4,6 +4,8 @@ type SortingCallback = (data: SortAnimationAction) => void;
 
 type SortingFunction = (arr: number[], cb: SortingCallback) => void;
 
+type Action = string;
+
 interface SortAnimationAction {
     action: string;
     payload?: NumberTupleLengthTwo;
@@ -14,6 +16,11 @@ interface GlobalState {
     timeoutIds: number[],
     iterations: NumberTupleLengthTwo[][]
 };
+
+// Constants used in the application.
+const ITERATION: Action = "iteration";
+
+const SWAP: Action = "swap";
 
 /**
  * Driver function for the program. 

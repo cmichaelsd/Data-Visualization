@@ -1,8 +1,13 @@
 /**
  * Processes animations for an iteration which has no swaps. 
+ * 
+ * @param animationDelay number
+ * @param totalSwapless number
  */
-function processSwaplessIterationAnimation(): void {
-    const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
+function processSwaplessIterationAnimation(animationDelay: number, totalSwapless: number): void {
+    const swaplessCount: HTMLElement = document.getElementById('swaplessCount');
 
-    // TODO
+    setTimeoutIds(function (): void {
+        swaplessCount.textContent = `${totalSwapless}`;
+    }, animationDelay);
 }

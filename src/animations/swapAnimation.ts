@@ -23,17 +23,17 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
      * animation by i * 10 so each animation happens after the next by
      * a fixed amount of time. 
      */
-    setTimeoutIds(setTimeout((): void => {
+    setTimeoutIds(function(): void {
         columnA.style.backgroundColor = SWAPPING_COLOR;
         columnB.style.backgroundColor = SWAPPING_COLOR;
-    }, animationDelay * globalState.delay));
+    }, animationDelay);
 
     /**
      * Highlight columns which have been swapped with swapped colors, delay 
      * animation by (i + 1) * 10 so animations happen a fixed time after the 
      * first animation; allow users to understand visually what is going on. 
      */
-    setTimeoutIds(setTimeout((): void => {
+    setTimeoutIds(function(): void {
         const columnAHeight: string = columnA.style.height;
         const columnBHeight: string = columnB.style.height;
         const columnAValue: string = columnA.getAttribute('data-value');
@@ -49,5 +49,5 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         columnB.dataset.value = columnAValue;
 
         swapCount.textContent = `${totalSwaps}`;
-    }, (animationDelay + 1) * globalState.delay));
+    }, animationDelay + 1);
 }

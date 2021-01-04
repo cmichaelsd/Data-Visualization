@@ -11,6 +11,7 @@ function processIterationAnimations(): void {
     const iterationCount: HTMLElement = document.getElementById('iterationCount');
     let previousIterationDelay: number = 0;
     let totalSwaps: number = 0;
+    let totalSwapless: number = 0;
     
     /**
      * Update iteration counter as the iterations come in from the sorting handler. 
@@ -38,25 +39,29 @@ function processIterationAnimations(): void {
          * if I want to animate a pulse for swapless iteration I should make previous + 2 or 3 and animate a flash on
          * all columns indicating nothing happened for the user during this iteration.
          */
-        setTimeoutIds(setTimeout((): void => {
-            for (let tupleIndex: number = 0; tupleIndex < bucket.length; ++tupleIndex) {
-                const tuple: NumberTupleLengthTwo = bucket[tupleIndex];
-                const swapAnimationDelay: number = iteration + tupleIndex;
+        setTimeoutIds(function (): void {
+            if (bucket.length) {
+                for (let tupleIndex: number = 0; tupleIndex < bucket.length; ++tupleIndex) {
+                    const tuple: NumberTupleLengthTwo = bucket[tupleIndex];
+                    const animationDelay: number = iteration + tupleIndex;
 
-                ++totalSwaps;
+                    ++totalSwaps;
 
-                /**
-                 * Due to the nature of nested setTimeouts all that matters is that the parent setTimeouts greater than the previous
-                 * the children of the parent timeout can be and incremental value and will fire before the next parent timeout is called.
-                 */
-                if (bucket.length) {
-                    processSwapAnimations(tuple, swapAnimationDelay, totalSwaps);
-                } else {
-                    processSwaplessIterationAnimation();
+                    /**
+                     * Due to the nature of nested setTimeouts all that matters is that the parent setTimeouts greater than the previous
+                     * the children of the parent timeout can be and incremental value and will fire before the next parent timeout is called.
+                     */
+                 
+                    processSwapAnimations(tuple, animationDelay, totalSwaps);
+                  
                 }
+            } else {
+                ++totalSwapless;
+
+                processSwaplessIterationAnimation(iteration, totalSwapless);
             }
 
-            iterationCount.textContent = `${iteration}`;
-        }, currentIterationDelay * globalState.delay));
+            iterationCount.textContent = `${iteration + 1}`;
+        }, currentIterationDelay);
     }
 }

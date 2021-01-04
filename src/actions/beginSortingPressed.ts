@@ -22,7 +22,7 @@ function beginSorting(): void {
         // Disable begin sorting button.
         toggleButtonDisabled('beginSortingButton', true);
         // Begin selected sort function on columns. 
-        sortFunction(arr, (data: SortAnimationAction) => {
+        sortFunction(arr, (data: SortAnimationAction): void => {
             /**
              * Will record each iteration
              * Not every iteration will include a swapping of values
