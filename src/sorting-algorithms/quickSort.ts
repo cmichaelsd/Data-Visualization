@@ -19,14 +19,15 @@ function partition(
 
     for (let j: number = low; j <= high-1; ++j) {
         cb({
-            action: ITERATION
-        });
+            action: Actions.ITERATION,
+            payload: []
+        }); 
 
         if (arr[j] <= x) {
             ++i;
 
             cb({
-                action: SWAP,
+                action: Actions.SWAP,
                 payload: [i, j]
             });
 
@@ -35,7 +36,7 @@ function partition(
     }
 
     cb({
-        action: SWAP,
+        action: Actions.SWAP,
         payload: [i+1, high]
     });
 

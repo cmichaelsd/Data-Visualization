@@ -5,9 +5,9 @@
  * @param totalSwapless number
  */
 function processSwaplessIterationAnimation(animationDelay: number, totalSwapless: number): void {
-    const swaplessCount: HTMLElement = document.getElementById('swaplessCount');
+    const swaplessSpan: HTMLElement = document.getElementById('swapless');
 
     setTimeoutIds(function (): void {
-        swaplessCount.textContent = `${totalSwapless}`;
+        swaplessSpan.innerHTML = format(Strings.swaplessIterationsSpanText, totalSwapless);
     }, animationDelay);
 }

@@ -11,7 +11,7 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
 
     const SWAPPING_COLOR: string = 'tomato';
     const SWAPPED_COLOR: string = 'deepskyblue';
-    const swapCount: HTMLElement = document.getElementById('swapCount');
+    const swapSpan: HTMLElement = document.getElementById('swap');
     const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
 
     const [ a, b ] = animationsTuple;
@@ -48,6 +48,6 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         columnA.dataset.value = columnBValue;
         columnB.dataset.value = columnAValue;
 
-        swapCount.textContent = `${totalSwaps}`;
+        swapSpan.innerHTML = format(Strings.swapsSpanText, totalSwaps);
     }, animationDelay + 1);
 }

@@ -1,8 +1,19 @@
-const globalState: GlobalState = {
+// Global state object for the application.
+const globalState: Readonly<GlobalState> = {
     delay: 20,
     timeoutIds: [],
     iterations: []
 };
+
+// Actions which the application can fire.
+const Actions: Readonly<StringMap> = {
+    ITERATION: "iteration",
+    SWAP: "swap"
+};
+
+Object.freeze(globalState);
+Object.freeze(Actions);
+
 
 /**
  * Pushes animation payloads to the iterations queue.
@@ -10,14 +21,17 @@ const globalState: GlobalState = {
  * @param data SortAnimationAction
  */
 function setIterations(data: SortAnimationAction): void {
-    const iterationsQueue = globalState.iterations;
+    const iterationsQueue: NumberTupleLengthTwo[][] = globalState.iterations;
 
-    if (data.action === "iteration") {
-        iterationsQueue.push([]);
-    }
-
-    if (data.action === "swap") {
-        iterationsQueue[iterationsQueue.length - 1].push(data.payload);
+    switch (data.action) {
+        case Actions.ITERATION:
+            iterationsQueue.push(data.payload as NumberTupleLengthTwo[]);
+            break;
+        case Actions.SWAP:
+            iterationsQueue[iterationsQueue.length - 1].push(data.payload as NumberTupleLengthTwo);
+            break;
+        default:
+            break;
     }
 }
 
@@ -25,7 +39,9 @@ function setIterations(data: SortAnimationAction): void {
  * Clears all iterations in the global states iterations queue. 
  */
 function clearIterations(): void {
-    globalState.iterations = [];
+    const iterationsQueue: NumberTupleLengthTwo[][] = globalState.iterations;
+
+    iterationsQueue.splice(0, iterationsQueue.length);
 }
 
 /**
@@ -34,8 +50,8 @@ function clearIterations(): void {
  * @param cb () => void
  * @param delay number
  */
-function setTimeoutIds(cb: any, delay: number): void {
-    const setTimeoutId = setTimeout(cb, delay * globalState.delay);
+function setTimeoutIds(cb: () => void, delay: number): void {
+    const setTimeoutId: number = setTimeout(cb, delay * globalState.delay);
 
     globalState.timeoutIds.push(setTimeoutId);
 }
@@ -50,7 +66,7 @@ function clearTimeoutids(): void {
         clearTimeout(timeoutIdsQueue[i]);
     }
 
-    globalState.timeoutIds = [];
+    timeoutIdsQueue.splice(0, timeoutIdsQueue.length);
 
     clearIterations();
 }

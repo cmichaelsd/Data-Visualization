@@ -7,7 +7,6 @@ function beginSorting(): void {
     const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
     let sortFunction: SortingFunction = null;
 
-
     switch(selectMethod) {
         case 'bubbleSort':
         case 'quickSort':

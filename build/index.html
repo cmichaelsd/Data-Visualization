@@ -12,44 +12,42 @@
 	<div id="appContainer">
 		<div id="countContainer">
 			<div>
-				<span>Iterations: </span>
-				<span id="iterationCount">0</span>
+				<span id="iteration" class="bindString" data-initial-value="0">@iterationsSpanText</span>
 			</div>
 			<div>
-				<span>Swapless Iterations: </span>
-				<span id="swaplessCount">0</span>
+				<span id="swapless" class="bindString" data-initial-value="0">@swaplessIterationsSpanText</span>
 			</div>
 			<div>
-				<span>Swaps: </span>
-				<span id="swapCount">0</span>
+				<span id="swap" class="bindString" data-initial-value="0">@swapsSpanText</span>
 			</div>
 		</div>
 		<div id="sortingContainer"></div>
 		<footer id="footer">
 			<div style="display: flex; flex-direction: column;">
-				<span>Columns</span>
+				<span class="bindString">@columnsSpanText</span>
 				<input id="columnAmount" class="slider" type="range" min="5" max="100" value="10" oninput="generateColumns(this.value)">
 			</div>
 			<div>
 				<div class="select-menu">
 					<select id="sortingMethod" onchange="onSelectChange()">
-						<option value="bubbleSort">Bubble Sort</option>
-						<option value="quickSort">Quick Sort</option>
+						<option value="bubbleSort" class="bindString">@bubbleSortOptionText</option>
+						<option value="quickSort" class="bindString">@quickSortOptionText</option>
 					</select>
 					<span class="select-arrow"></span>
 				</div>
 			</div>
 			<div>
-				<button id="beginSortingButton" class="button" onclick="beginSorting()">Begin Sorting</button>
+				<button id="beginSortingButton" class="bindString button" onclick="beginSorting()">@beginSortingButtonText</button>
 			</div>
 			<div>
-				<button id="scrambleColumnsButton" class="button" onclick="regenerateColumns()">Scramble Columns</button>
+				<button id="scrambleColumnsButton" class="bindString button" onclick="regenerateColumns()">@ScrambleColumnsButtonText</button>
 			</div>
 		</footer>
 	</div>
 
 	<!-- State -->
 	<script src="./state/index.js"></script>
+	<script src="./strings/index.js"></script>
 
 	<!-- Sorting -->
 	<script src="./sorting-algorithms/quickSort.js"></script>

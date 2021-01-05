@@ -83,3 +83,19 @@ function clearApplication(): void {
     // Clear all pending and running timeouts.
     clearTimeoutids();
 }
+
+/**
+ * Initializes text for the application. 
+ */
+function bindStrings(): void {
+    const elements: HTMLCollectionOf<Element> = document.getElementsByClassName('bindString');
+
+    for (let i: number = 0; i < elements.length; ++i) {
+        const element = elements[i] as HTMLOptionElement;
+        const initialValue: string = element.dataset.initialValue;
+        const stringKey: string = element.textContent.slice(1, element.textContent.length);
+        const content: string = initialValue ? format(Strings[stringKey], initialValue) : Strings[stringKey];
+        
+        element.innerHTML = content;
+    }
+}

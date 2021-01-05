@@ -8,7 +8,7 @@ function processIterationAnimations(): void {
         return;
     }
 
-    const iterationCount: HTMLElement = document.getElementById('iterationCount');
+    const iterationSpan: HTMLElement = document.getElementById('iteration');
     let previousIterationDelay: number = 0;
     let totalSwaps: number = 0;
     let totalSwapless: number = 0;
@@ -61,7 +61,7 @@ function processIterationAnimations(): void {
                 processSwaplessIterationAnimation(iteration, totalSwapless);
             }
 
-            iterationCount.textContent = `${iteration + 1}`;
+            iterationSpan.innerHTML = format(Strings.iterationsSpanText, iteration + 1);
         }, currentIterationDelay);
     }
 }

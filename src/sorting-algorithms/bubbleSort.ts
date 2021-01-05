@@ -15,7 +15,8 @@ function bubbleSort(arr: number[], cb: SortingCallback): void {
         // For the number of elements minus current iteration. 
         for (let j: number = 0; j < arr.length-i-1; ++j) {
             cb({
-                action: ITERATION
+                action: Actions.ITERATION,
+                payload: []
             });
             
             // Swap elements if current is greater than next. 
@@ -23,7 +24,7 @@ function bubbleSort(arr: number[], cb: SortingCallback): void {
                 swapped = true;
 
                 cb({ 
-                    action: SWAP,
+                    action: Actions.SWAP,
                     payload: [j, j+1] 
                 });
 
