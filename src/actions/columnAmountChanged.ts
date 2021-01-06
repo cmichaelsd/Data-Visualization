@@ -22,11 +22,11 @@ function generateColumns(columns: number): void {
     const SORTING_CONTAINER_WIDTH: number = sortingContainer.offsetWidth;
 
     // Clear currently existing iteration count.
-    iteration.innerHTML = format(iteration.innerHTML, 0);
+    iteration.innerHTML = format(getString(Strings.iterationsSpanText), 0);
     // Clear currently existing swapless count.
-    swapless.innerHTML = format(swapless.innerHTML, 0);
+    swapless.innerHTML = format(getString(Strings.swaplessIterationsSpanText), 0);
     // Clear currently existing swap count. 
-    swap.innerHTML = format(swap.innerHTML, 0);
+    swap.innerHTML = format(getString(Strings.swapsSpanText), 0);
     // Clear currently existing columns. 
     sortingContainer.innerHTML = '';
 

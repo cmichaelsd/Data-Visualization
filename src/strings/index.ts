@@ -27,6 +27,11 @@ Object.freeze(Strings);
  * @return string
  */
 function getString(value: string): string {
+    /**
+     * This function could either be large in time or space. I chose time.
+     * I could make a mirror image of the Strings object and by value get key and see if
+     * key has a match for browser language in constant time.
+     */
     const language = getClientLanguage();
 
     if (language !== 'en') {
@@ -54,8 +59,6 @@ function getString(value: string): string {
  */
 function format(format: string, ...args: any[]): string {
     return format.replace(/{(\d+)}/g, function(match: string, number: number) {
-        return typeof args[number] !== 'undefined'
-            ? args[number]
-            : match;
+        return args[number];
     });
 };
