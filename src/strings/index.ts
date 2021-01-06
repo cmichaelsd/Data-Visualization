@@ -12,10 +12,10 @@ const Strings: Readonly<StringMap> = {
     beginSortingButtonText: 'Begin Sorting',
     ScrambleColumnsButtonText: 'Scramble Columns',
     bubbleSortOptionText: 'Bubble Sort',
-    quickSortOptionText: 'Quick Sort'
+    quickSortOptionText: 'Quick Sort',
 
     // Korean
-
+    iterationsSpanText_kr: 'test',
 };
 
 Object.freeze(Strings);
@@ -26,10 +26,22 @@ Object.freeze(Strings);
  * @param key string
  * @return string
  */
-function getString(key: string): string {
+function getString(value: string): string {
     const language = getClientLanguage();
 
-    return Strings[`${key}_${language}`] || Strings[key];
+    if (language !== 'en') {
+        let currentKey = null;
+
+        for (let key in Strings) {
+            if (Strings[key] === value) {
+                currentKey = key;
+            }
+        }
+
+        return Strings[`${currentKey}_${language}`] || value;
+    }
+
+    return value;
 }
 
 /**
@@ -42,7 +54,7 @@ function getString(key: string): string {
  */
 function format(format: string, ...args: any[]): string {
     return format.replace(/{(\d+)}/g, function(match: string, number: number) {
-        return typeof args[number] != 'undefined'
+        return typeof args[number] !== 'undefined'
             ? args[number]
             : match;
     });

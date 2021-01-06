@@ -94,7 +94,7 @@ function bindStrings(): void {
         const element = elements[i] as HTMLOptionElement;
         const initialValue: string = element.dataset.initialValue;
         const stringKey: string = element.textContent.slice(1, element.textContent.length);
-        const content: string = initialValue ? format(getString(stringKey), initialValue) : getString(stringKey);
+        const content: string = initialValue ? format(getString(Strings[stringKey]), initialValue) : getString(Strings[stringKey]);
         
         element.innerHTML = content;
     }
