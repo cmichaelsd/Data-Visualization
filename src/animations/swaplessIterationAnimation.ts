@@ -8,6 +8,6 @@ function processSwaplessIterationAnimation(animationDelay: number, totalSwapless
     const swaplessSpan: HTMLElement = document.getElementById('swapless');
 
     setTimeoutIds(function (): void {
-        swaplessSpan.innerHTML = format(getString('swaplessIterationsSpanText'), totalSwapless);
+        swaplessSpan.innerHTML = format(getString(Strings.swaplessIterationsSpanText), totalSwapless);
     }, animationDelay);
 }
