@@ -14,6 +14,7 @@ interface SortAnimationAction {
 };
 
 interface GlobalState {
+    clientLanguage: string,
     delay: number,
     timeoutIds: number[],
     iterations: NumberTupleLengthTwo[][]
@@ -21,6 +22,7 @@ interface GlobalState {
 
 // Driver function for the program. 
 (function main(): number {
+    initClientLanguageFromBrowser();
     bindStrings();
     generateColumns(10);
 

@@ -48,6 +48,6 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         columnA.dataset.value = columnBValue;
         columnB.dataset.value = columnAValue;
 
-        swapSpan.innerHTML = format(Strings.swapsSpanText, totalSwaps);
+        swapSpan.innerHTML = format(getString('swapsSpanText'), totalSwaps);
     }, animationDelay + 1);
 }

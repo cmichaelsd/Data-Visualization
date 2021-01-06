@@ -94,8 +94,15 @@ function bindStrings(): void {
         const element = elements[i] as HTMLOptionElement;
         const initialValue: string = element.dataset.initialValue;
         const stringKey: string = element.textContent.slice(1, element.textContent.length);
-        const content: string = initialValue ? format(Strings[stringKey], initialValue) : Strings[stringKey];
+        const content: string = initialValue ? format(getString(stringKey), initialValue) : getString(stringKey);
         
         element.innerHTML = content;
     }
+}
+
+/**
+ * Returns the language used by the clients browser. 
+ */
+function initClientLanguageFromBrowser(): void {
+    setClientLanguage(navigator.language.split('-')[0]);
 }

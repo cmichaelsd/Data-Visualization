@@ -1,5 +1,6 @@
 // Global state object for the application.
-const globalState: Readonly<GlobalState> = {
+const globalState: GlobalState = {
+    clientLanguage: 'en',
     delay: 20,
     timeoutIds: [],
     iterations: []
@@ -69,4 +70,22 @@ function clearTimeoutids(): void {
     timeoutIdsQueue.splice(0, timeoutIdsQueue.length);
 
     clearIterations();
+}
+
+/**
+ * Sets the clients browser language to the global state.
+ * 
+ * @param language
+ */
+function setClientLanguage(language: string): void {
+    globalState.clientLanguage = language;
+}
+
+/**
+ * Gets the clients browser language from the global state.
+ * 
+ * @return string
+ */
+function getClientLanguage(): string {
+    return globalState.clientLanguage;
 }
