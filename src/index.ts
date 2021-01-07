@@ -13,13 +13,6 @@ interface SortAnimationAction {
     payload?: NumberTupleLengthTwo | NumberTupleLengthTwo[];
 };
 
-interface GlobalState {
-    clientLanguage: string,
-    delay: number,
-    timeoutIds: number[],
-    iterations: NumberTupleLengthTwo[][]
-};
-
 // Driver function for the program. 
 (function main(): number {
     initClientLanguageFromBrowser(); 

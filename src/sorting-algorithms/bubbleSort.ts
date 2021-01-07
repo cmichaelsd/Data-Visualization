@@ -15,7 +15,7 @@ function bubbleSort(arr: number[], cb: SortingCallback): void {
         // For the number of elements minus current iteration. 
         for (let j: number = 0; j < arr.length-i-1; ++j) {
             cb({
-                action: State.Actions.ITERATION,
+                action: Actions.ITERATION,
                 payload: []
             });
             
@@ -24,7 +24,7 @@ function bubbleSort(arr: number[], cb: SortingCallback): void {
                 swapped = true;
 
                 cb({ 
-                    action: State.Actions.SWAP,
+                    action: Actions.SWAP,
                     payload: [j, j+1] 
                 });
 

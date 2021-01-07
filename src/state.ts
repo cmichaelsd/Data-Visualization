@@ -4,12 +4,6 @@ namespace State {
     export const iterations = [];
     export let clientLanguage = 'en';
 
-    // Actions which the application can fire.
-    export const enum Actions {
-        ITERATION = "iteration",
-        SWAP = "swap"
-    };
-
     /**
      * Pushes animation payloads to the iterations queue.
      * 
@@ -85,3 +79,8 @@ namespace State {
     }
 }
 
+// Actions which the application can fire.
+const enum Actions {
+    ITERATION = "iteration",
+    SWAP = "swap"
+};
