@@ -13,20 +13,13 @@ function generateColumns(columns: number): void {
         return;
     }
 
-    const sortingContainer: HTMLElement = document.getElementById('sortingContainer');
-    const iteration: HTMLElement = document.getElementById('iteration');
-    const swapless: HTMLElement = document.getElementById('swapless');
-    const swap: HTMLElement = document.getElementById('swap');
+    const sortingContainer: HTMLElement = document.getElementById(R.IDs.sortingContainer);
     const MIN_COLUMN_HEIGHT: number = 1;
     const MAX_COLUMN_HEIGHT: number = sortingContainer.offsetHeight;
     const SORTING_CONTAINER_WIDTH: number = sortingContainer.offsetWidth;
 
-    // Clear currently existing iteration count.
-    iteration.innerHTML = format(getString(Strings.iterationsSpanText), 0);
-    // Clear currently existing swapless count.
-    swapless.innerHTML = format(getString(Strings.swaplessIterationsSpanText), 0);
-    // Clear currently existing swap count. 
-    swap.innerHTML = format(getString(Strings.swapsSpanText), 0);
+    // Clear application.
+    clearApplication();
     // Clear currently existing columns. 
     sortingContainer.innerHTML = '';
 

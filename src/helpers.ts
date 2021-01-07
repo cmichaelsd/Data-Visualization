@@ -76,33 +76,36 @@ function toggleButtonDisabled(id: string, state: boolean): void {
  * Clears application state to avoid animation errors and resets button disabled property.
  */
 function clearApplication(): void {
+    const iteration: HTMLElement = document.getElementById(R.IDs.iteration);
+    const swapless: HTMLElement = document.getElementById(R.IDs.swapless);
+    const swap: HTMLElement = document.getElementById(R.IDs.swap);
+
+    // Clear currently existing iteration count.
+    iteration.innerHTML = R.Strings.format(
+        R.Strings.getString(R.Strings.iterationsSpanText),
+        iteration.dataset.initialValue
+    );
+    // Clear currently existing swapless count.
+    swapless.innerHTML = R.Strings.format(
+        R.Strings.getString(R.Strings.swaplessIterationsSpanText),
+        swapless.dataset.initialValue
+    );
+    // Clear currently existing swap count. 
+    swap.innerHTML = R.Strings.format(
+        R.Strings.getString(R.Strings.swapsSpanText),
+        swapless.dataset.initialValue
+    );
     // Enable begin sort button. 
-    toggleButtonDisabled('beginSortingButton', false);
+    toggleButtonDisabled(R.IDs.beginSortingButton, false);
     // Clear any iterations from queue if they exist.
-    clearIterations();
+    State.clearIterations();
     // Clear all pending and running timeouts.
-    clearTimeoutids();
-}
-
-/**
- * Initializes text for the application. 
- */
-function bindStrings(): void {
-    const elements: HTMLCollectionOf<Element> = document.getElementsByClassName('bindString');
-
-    for (let i: number = 0; i < elements.length; ++i) {
-        const element = elements[i] as HTMLOptionElement;
-        const initialValue: string = element.dataset.initialValue;
-        const stringKey: string = element.textContent.slice(1, element.textContent.length);
-        const content: string = initialValue ? format(getString(Strings[stringKey]), initialValue) : getString(Strings[stringKey]);
-        
-        element.innerHTML = content;
-    }
+    State.clearTimeoutids();
 }
 
 /**
  * Returns the language used by the clients browser. 
  */
 function initClientLanguageFromBrowser(): void {
-    setClientLanguage(navigator.language.split('-')[0]);
+    State.setClientLanguage(navigator.language.split('-')[0]);
 }

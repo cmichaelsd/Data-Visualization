@@ -2,13 +2,13 @@
  * Processes animations for each iteration.
  */
 function processIterationAnimations(): void {
-    const iterations: NumberTupleLengthTwo[][] = globalState.iterations;
+    const iterations: NumberTupleLengthTwo[][] = State.iterations;
     
     if (iterations.length < 0) {
         return;
     }
 
-    const iterationSpan: HTMLElement = document.getElementById('iteration');
+    const iterationSpan: HTMLElement = document.getElementById(R.IDs.iteration);
     let previousIterationDelay: number = 0;
     let totalSwaps: number = 0;
     let totalSwapless: number = 0;
@@ -39,7 +39,7 @@ function processIterationAnimations(): void {
          * if I want to animate a pulse for swapless iteration I should make previous + 2 or 3 and animate a flash on
          * all columns indicating nothing happened for the user during this iteration.
          */
-        setTimeoutIds(function (): void {
+        State.setTimeoutIds(function (): void {
             if (bucket.length) {
                 for (let tupleIndex: number = 0; tupleIndex < bucket.length; ++tupleIndex) {
                     const tuple: NumberTupleLengthTwo = bucket[tupleIndex];
@@ -61,7 +61,11 @@ function processIterationAnimations(): void {
                 processSwaplessIterationAnimation(iteration, totalSwapless);
             }
 
-            iterationSpan.innerHTML = format(getString(Strings.iterationsSpanText), iteration + 1);
+            // iterationSpan.innerHTML = format(getString(Strings.iterationsSpanText), iteration + 1);
+            iterationSpan.innerHTML = R.Strings.format(
+                R.Strings.getString(R.Strings.iterationsSpanText),
+                iteration + 1
+            );
         }, currentIterationDelay);
     }
 }

@@ -9,9 +9,7 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         return;
     }
 
-    const SWAPPING_COLOR: string = 'tomato';
-    const SWAPPED_COLOR: string = 'deepskyblue';
-    const swapSpan: HTMLElement = document.getElementById('swap');
+    const swapSpan: HTMLElement = document.getElementById(R.IDs.swap);
     const columns: HTMLCollectionOf<Element> = document.getElementsByClassName('column');
 
     const [ a, b ] = animationsTuple;
@@ -23,9 +21,9 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
      * animation by i * 10 so each animation happens after the next by
      * a fixed amount of time. 
      */
-    setTimeoutIds(function(): void {
-        columnA.style.backgroundColor = SWAPPING_COLOR;
-        columnB.style.backgroundColor = SWAPPING_COLOR;
+    State.setTimeoutIds(function(): void {
+        columnA.style.backgroundColor = R.Colors.SWAPPING_COLOR;
+        columnB.style.backgroundColor = R.Colors.SWAPPING_COLOR;
     }, animationDelay);
 
     /**
@@ -33,7 +31,7 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
      * animation by (i + 1) * 10 so animations happen a fixed time after the 
      * first animation; allow users to understand visually what is going on. 
      */
-    setTimeoutIds(function(): void {
+    State.setTimeoutIds(function(): void {
         const columnAHeight: string = columnA.style.height;
         const columnBHeight: string = columnB.style.height;
         const columnAValue: string = columnA.getAttribute('data-value');
@@ -42,12 +40,15 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         columnA.style.height = columnBHeight;
         columnB.style.height = columnAHeight;
 
-        columnA.style.backgroundColor = SWAPPED_COLOR;
-        columnB.style.backgroundColor = SWAPPED_COLOR;
+        columnA.style.backgroundColor = R.Colors.SWAPPED_COLOR;
+        columnB.style.backgroundColor = R.Colors.SWAPPED_COLOR;
 
         columnA.dataset.value = columnBValue;
         columnB.dataset.value = columnAValue;
 
-        swapSpan.innerHTML = format(getString(Strings.swapsSpanText), totalSwaps);
+        swapSpan.innerHTML = R.Strings.format(
+            R.Strings.getString(R.Strings.swapsSpanText),
+            totalSwaps
+        );
     }, animationDelay + 1);
 }

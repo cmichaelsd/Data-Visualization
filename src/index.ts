@@ -22,8 +22,7 @@ interface GlobalState {
 
 // Driver function for the program. 
 (function main(): number {
-    initClientLanguageFromBrowser();
-    bindStrings();
+    initClientLanguageFromBrowser(); 
     generateColumns(10);
 
     return 0;

@@ -3,7 +3,7 @@
  */
 function beginSorting(): void {
     const arr: number[] = nodeListToNumberArray();
-    const selectMenu: HTMLSelectElement = document.getElementById('sortingMethod') as HTMLSelectElement;
+    const selectMenu: HTMLSelectElement = document.getElementById(R.IDs.sortingMethod) as HTMLSelectElement;
     const selectMethod: string = selectMenu.options[selectMenu.selectedIndex].value;
     let sortFunction: SortingFunction = null;
 
@@ -19,7 +19,7 @@ function beginSorting(): void {
 
     if (!checkNumberArrayIsSorted(arr)) {
         // Disable begin sorting button.
-        toggleButtonDisabled('beginSortingButton', true);
+        toggleButtonDisabled(R.IDs.beginSortingButton, true);
         // Begin selected sort function on columns. 
         sortFunction(arr, (data: SortAnimationAction): void => {
             /**
@@ -52,7 +52,7 @@ function beginSorting(): void {
              * array
              */
 
-            setIterations(data);
+            State.setIterations(data);
         });
         
         processIterationAnimations();
