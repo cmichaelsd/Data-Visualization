@@ -1,4 +1,4 @@
-function merge(arr: number[], leftIndex: number, middleIndex: number, rightIndex: number): void {
+function merge(arr: number[], leftIndex: number, middleIndex: number, rightIndex: number, cb: SortingCallback): void {
     const leftRange: number = middleIndex - leftIndex + 1;
     const rightRange: number = rightIndex - middleIndex;
     const leftArray: number[] = [];
@@ -41,15 +41,15 @@ function merge(arr: number[], leftIndex: number, middleIndex: number, rightIndex
     }
 }
 
-function mergeSort(arr: number[], leftIndex: number, rightIndex: number): void {
+function mergeSort(arr: number[], leftIndex: number, rightIndex: number, cb: SortingCallback): void {
     if (leftIndex < rightIndex) {
         const middleIndex: number = Math.floor(leftIndex + (rightIndex - leftIndex) / 2);
 
         // Sort left
-        mergeSort(arr, leftIndex, middleIndex);
+        mergeSort(arr, leftIndex, middleIndex, cb);
         // Sort right
-        mergeSort(arr, middleIndex + 1, rightIndex);
+        mergeSort(arr, middleIndex + 1, rightIndex, cb);
         // Merge
-        merge(arr, leftIndex, middleIndex, rightIndex);
+        merge(arr, leftIndex, middleIndex, rightIndex, cb);
     }
 }
