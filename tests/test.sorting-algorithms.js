@@ -15,6 +15,8 @@ function generateArray() {
     return arr;
 }
 
+function sortingCallback() { }
+
 suite('Sorting Algorithms', () => {
 
     let arr = null;
@@ -30,16 +32,16 @@ suite('Sorting Algorithms', () => {
     });
 
     const suites = [
-        { title: 'Bubble Sort', func: 'bubbleSort', args: [() => { }] },
-        { title: 'Quick Sort', func: 'quickSort', args: [() => { }] },
-        // { title: 'Merge Sort', func: 'mergeSort', args: [0, ] }
+        { title: 'Bubble Sort', func: 'bubbleSort', args: [sortingCallback] },
+        { title: 'Quick Sort', func: 'quickSort', args: [sortingCallback] },
+        { title: 'Merge Sort', func: 'mergeSort', args: [sortingCallback] }
     ];
 
-    // Call func with params: any[], bind or call or apply
     for (let { title, func, args } of suites) {
         suite(title, () => {
             test('should return a sorted array', () => {
-                window[func].call(null, arr, ...args);
+                // Additional arguments can be dynamically supplied 
+                window[func].call(this, arr, ...args);
                 expect(arr).to.eql(sorted);
             });
         });

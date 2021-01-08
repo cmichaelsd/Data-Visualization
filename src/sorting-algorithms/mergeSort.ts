@@ -1,55 +1,45 @@
-function merge(arr: number[], leftIndex: number, middleIndex: number, rightIndex: number, cb: SortingCallback): void {
-    const leftRange: number = middleIndex - leftIndex + 1;
-    const rightRange: number = rightIndex - middleIndex;
-    const leftArray: number[] = [];
-    const rightArray: number[] = [];
+/**
+ * Sorts a number array and uses a callback function to perserve animation information.
+ * 
+ * @param arr number[]
+ * @param cb SortingCallback
+ */
+function mergeSort(arr, cb: SortingCallback) {
+    if (arr.length > 1) {
+        const middleIndex = Math.floor(arr.length / 2);
 
-    for (let i: number = 0; i < leftRange; ++i) {
-        leftArray[i] = arr[leftIndex + i];
-    }
+        const left = arr.slice(0, middleIndex);
+        const right = arr.slice(middleIndex, arr.length);
 
-    for (let i: number = 0; i < rightRange; ++i) {
-        rightArray[i] = arr[middleIndex + 1 + i];
-    }
+        mergeSort(left, cb);
+        mergeSort(right, cb);
 
-    let leftArrayIndex: number = 0;
-    let rightArrayIndex: number = 0;
-    let arrayIndex: number = leftIndex;
+        let i = 0;
+        let j = 0;
+        let k = 0;
 
-    while (leftArrayIndex < leftRange && rightArrayIndex < rightRange) {
-        if (leftArray[leftArrayIndex] <= rightArray[rightArrayIndex]) {
-            arr[arrayIndex] = leftArray[leftArrayIndex];
-            ++leftArrayIndex;
-        } else {
-            arr[arrayIndex] = rightArray[rightArrayIndex];
-            ++rightArrayIndex;
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                arr[k] = left[i];
+                ++i;
+            } else {
+                arr[k] = right[j];
+                ++j;
+            }
+
+            ++k;
         }
 
-        ++arrayIndex;
-    }
+        while (i < left.length) {
+            arr[k] = left[i];
+            ++i;
+            ++k;
+        }
 
-    while (leftArrayIndex < leftRange) {
-        arr[arrayIndex] = leftArray[leftArrayIndex];
-        ++leftArrayIndex;
-        ++arrayIndex;
-    }
-
-    while (rightArrayIndex < rightRange) {
-        arr[arrayIndex] = leftArray[rightArrayIndex];
-        ++rightArrayIndex;
-        ++arrayIndex;
-    }
-}
-
-function mergeSort(arr: number[], leftIndex: number, rightIndex: number, cb: SortingCallback): void {
-    if (leftIndex < rightIndex) {
-        const middleIndex: number = Math.floor(leftIndex + (rightIndex - leftIndex) / 2);
-
-        // Sort left
-        mergeSort(arr, leftIndex, middleIndex, cb);
-        // Sort right
-        mergeSort(arr, middleIndex + 1, rightIndex, cb);
-        // Merge
-        merge(arr, leftIndex, middleIndex, rightIndex, cb);
+        while (j < right.length) {
+            arr[k] = right[j];
+            ++j;
+            ++k;
+        }
     }
 }
