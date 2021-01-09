@@ -18,11 +18,35 @@
     <script src="../build/sorting-algorithms/quickSort.js"></script>
     <script src="../build/sorting-algorithms/mergeSort.js"></script>
 
+    <!-- Helpers -->
+    <script src="../build/helpers.js"></script>
+
+    <!-- State -->
+    <script src="../build/state.js"></script>
+
     <script class="mocha-init">
         mocha.setup('tdd');
         mocha.checkLeaks();
+        const expect = chai.expect;
+
+        function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        function generateArray() {
+            const arr = [];
+            const randomLength = randomNumber(5, 100);
+
+            for (let i = 0; i < randomLength; ++i) {
+                arr[i] = randomNumber(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+            }
+
+            return arr;
+        }
     </script>
     <script src="test.sorting-algorithms.js"></script>
+    <script src="test.helpers.js"></script>
+    <script src="test.state.js"></script>
     <script class="mocha-exec">
         mocha.run();
     </script>

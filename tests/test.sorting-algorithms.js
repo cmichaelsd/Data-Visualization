@@ -1,20 +1,3 @@
-const expect = chai.expect;
-
-function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-}
-
-function generateArray() {
-    const arr = [];
-    const randomLength = randomNumber(5, 100);
-
-    for (let i = 0; i < randomLength; ++i) {
-        arr[i] = randomNumber(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
-    }
-
-    return arr;
-}
-
 function sortingCallback() { }
 
 suite('Sorting Algorithms', () => {
