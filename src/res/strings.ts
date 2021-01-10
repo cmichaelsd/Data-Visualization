@@ -1,4 +1,4 @@
-namespace R {
+﻿namespace R {
     // An enum of strings used throughout the application.
     export enum Strings {
         // English
@@ -14,8 +14,19 @@ namespace R {
         bubbleSortOptionText = 'Bubble Sort',
         quickSortOptionText = 'Quick Sort',
 
+
         // Korean
-        iterationsSpanText_kr = 'test',
+        // Counts
+        iterationsSpanText_kr = '반복: {0}',
+        swaplessIterationsSpanText_kr = '무교체 반복: {0}',
+        swapsSpanText_kr = '교체: {0}',
+
+        // Action Item Text
+        columnsSpanText_kr = '막대',
+        beginSortingButtonText_kr = '분류',
+        ScrambleColumnsButtonText_kr = '셔플',
+        bubbleSortOptionText_kr = '버블 정렬',
+        quickSortOptionText_kr = '퀵 정렬',
     };
      
     export namespace Strings {

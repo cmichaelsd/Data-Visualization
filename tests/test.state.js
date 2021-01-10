@@ -17,4 +17,17 @@ suite('State', () => {
             expect(State.clientLanguage).to.equal('en');
         });
     });
+
+    suite('#setIterations()', () => {
+        test('should add empty array to #iterations property given an action of "ITERATION"', () => {
+            const data = {
+                action: 'iteration',
+                payload: []
+            };
+
+            expect(State.iterations).to.eql([]);
+            State.setIterations(data);
+            expect(State.iterations).to.eql([[]]);
+        });
+    });
 });
