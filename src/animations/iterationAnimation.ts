@@ -61,8 +61,7 @@ function processIterationAnimations(): void {
                 processSwaplessIterationAnimation(iteration, totalSwapless);
             }
 
-            // iterationSpan.innerHTML = format(getString(Strings.iterationsSpanText), iteration + 1);
-            iterationSpan.innerHTML = R.Strings.format(
+            iterationSpan.textContent = R.Strings.format(
                 R.Strings.getString(R.Strings.iterationsSpanText),
                 iteration + 1
             );

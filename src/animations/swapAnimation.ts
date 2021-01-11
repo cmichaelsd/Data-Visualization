@@ -46,7 +46,7 @@ function processSwapAnimations(animationsTuple: NumberTupleLengthTwo, animationD
         columnA.dataset.value = columnBValue;
         columnB.dataset.value = columnAValue;
 
-        swapSpan.innerHTML = R.Strings.format(
+        swapSpan.textContent = R.Strings.format(
             R.Strings.getString(R.Strings.swapsSpanText),
             totalSwaps
         );

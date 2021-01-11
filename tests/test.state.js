@@ -19,15 +19,31 @@ suite('State', () => {
     });
 
     suite('#setIterations()', () => {
-        test('should add empty array to #iterations property given an action of "ITERATION"', () => {
-            const data = {
-                action: 'iteration',
-                payload: []
-            };
+        const dataIteration = {
+            action: 'iteration',
+            payload: []
+        };
 
+        const dataSwap = {
+            action: 'swap',
+            payload: [1, 2]
+        };
+
+        setup(() => {
+            State.iterations = [];
+        });
+
+        test('should add empty array to #iterations property given an action of "ITERATION"', () => {
             expect(State.iterations).to.eql([]);
-            State.setIterations(data);
+            State.setIterations(dataIteration);
             expect(State.iterations).to.eql([[]]);
+        });
+
+        test('should add swap tuple to #iterations property correctly given an action of "SWAP"', () => {
+            State.setIterations(dataIteration);
+            expect(State.iterations).to.eql([[]]);
+            State.setIterations(dataSwap);
+            expect(State.iterations).to.eql([[[1, 2]]]);
         });
     });
 });

@@ -8,7 +8,7 @@ function processSwaplessIterationAnimation(animationDelay: number, totalSwapless
     const swaplessSpan: HTMLElement = document.getElementById(R.IDs.swapless);
 
     State.setTimeoutIds(function (): void {
-        swaplessSpan.innerHTML = R.Strings.format(
+        swaplessSpan.textContent = R.Strings.format(
             R.Strings.getString(R.Strings.swaplessIterationsSpanText),
             totalSwapless
         );

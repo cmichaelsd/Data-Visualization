@@ -81,17 +81,17 @@ function clearApplication(): void {
     const swap: HTMLElement = document.getElementById(R.IDs.swap);
 
     // Clear currently existing iteration count.
-    iteration.innerHTML = R.Strings.format(
+    iteration.textContent = R.Strings.format(
         R.Strings.getString(R.Strings.iterationsSpanText),
         iteration.dataset.initialValue
     );
     // Clear currently existing swapless count.
-    swapless.innerHTML = R.Strings.format(
+    swapless.textContent = R.Strings.format(
         R.Strings.getString(R.Strings.swaplessIterationsSpanText),
         swapless.dataset.initialValue
     );
     // Clear currently existing swap count. 
-    swap.innerHTML = R.Strings.format(
+    swap.textContent = R.Strings.format(
         R.Strings.getString(R.Strings.swapsSpanText),
         swapless.dataset.initialValue
     );
