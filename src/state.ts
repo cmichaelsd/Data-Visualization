@@ -48,7 +48,7 @@ namespace State {
     /**
      * Clears all timeout ids in the global states timeoutIds queue.
      */
-    export function clearTimeoutids(): void {
+    export function clearTimeoutIds(): void {
         const timeoutIdsQueue: number[] = timeoutIds;
 
         for (let i: number = 0; i < timeoutIdsQueue.length; ++i) {

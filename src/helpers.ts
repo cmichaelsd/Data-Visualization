@@ -100,7 +100,7 @@ function clearApplication(): void {
     // Clear any iterations from queue if they exist.
     State.clearIterations();
     // Clear all pending and running timeouts.
-    State.clearTimeoutids();
+    State.clearTimeoutIds();
 }
 
 /**
