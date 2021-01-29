@@ -16,8 +16,7 @@ suite('Sorting Algorithms', () => {
 
     const suites = [
         { title: 'Bubble Sort', func: 'bubbleSort', args: [sortingCallback] },
-        { title: 'Quick Sort', func: 'quickSort', args: [sortingCallback] },
-        { title: 'Merge Sort', func: 'mergeSort', args: [sortingCallback] }
+        { title: 'Quick Sort', func: 'quickSort', args: [sortingCallback] }
     ];
 
     for (let { title, func, args } of suites) {
@@ -25,7 +24,7 @@ suite('Sorting Algorithms', () => {
             test('should return a sorted array', () => {
                 // Additional arguments can be dynamically supplied 
                 window[func].call(this, arr, ...args);
-                expect(arr).to.eql(sorted);
+                expect(JSON.stringify(arr)).to.equal(JSON.stringify(sorted));
             });
         });
     }
