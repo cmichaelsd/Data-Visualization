@@ -3,19 +3,21 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "scripts": {
-        "build-tsc": "npx tsc",
-        "build-scss": "sass src/styles/index.scss build/styles/index.css",
-        "build": "concurrently \"npm run build-tsc\" \"npm run build-scss\"",
-        "dev-scss": "sass --watch src/styles/index.scss build/styles/index.css",
-        "dev-tsc": "npx tsc --watch",
-        "dev": "concurrently \"npm run dev-scss\" \"npm run dev-tsc\""
-    },
+  "scripts": {
+    "start": "serve build",
+    "build-tsc": "npx tsc",
+    "build-scss": "sass src/styles/index.scss build/styles/index.css",
+    "build": "concurrently \"npm run build-tsc\" \"npm run build-scss\"",
+    "dev-scss": "sass --watch src/styles/index.scss build/styles/index.css",
+    "dev-tsc": "npx tsc --watch",
+    "dev": "concurrently \"npm run dev-scss\" \"npm run dev-tsc\""
+  },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
         "sass": "^1.30.0",
+        "serve": "^11.3.2",
         "typescript": "^4.1.3"
     },
     "devDependencies": {
