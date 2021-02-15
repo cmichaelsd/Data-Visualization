@@ -20,10 +20,6 @@ function generateColumns(columns: number): void {
 
     // Clear application.
     clearApplication();
-    // Clear currently existing columns. 
-    sortingContainer.innerHTML = '';
-
-    clearApplication();
 
     for (let i: number = 0; i < columns; ++i) {
         const column: HTMLElement = document.createElement('div');

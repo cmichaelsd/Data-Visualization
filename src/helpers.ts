@@ -76,10 +76,13 @@ function toggleButtonDisabled(id: string, state: boolean): void {
  * Clears application state to avoid animation errors and resets button disabled property.
  */
 function clearApplication(): void {
+    const sortingContainer: HTMLElement = document.getElementById(R.IDs.sortingContainer);
     const iteration: HTMLElement = document.getElementById(R.IDs.iteration);
     const swapless: HTMLElement = document.getElementById(R.IDs.swapless);
     const swap: HTMLElement = document.getElementById(R.IDs.swap);
 
+    // Clear currently existing columns. 
+    sortingContainer.innerHTML = '';
     // Clear currently existing iteration count.
     iteration.textContent = R.Strings.format(
         R.Strings.getString(R.Strings.iterationsSpanText),
