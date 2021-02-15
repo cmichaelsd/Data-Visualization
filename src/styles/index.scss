@@ -22,17 +22,29 @@ body {
 }
 
 // Tablet solution.
-@media (max-width: 920px) {
+@media (max-width: 920px)  {
     #appContainer {
-        transform: translate(-50%, -50%) 
-            rotate(-90deg);
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    @media (orientation: portrait) {
+        #appContainer {
+            transform: translate(-50%, -50%) rotate(-90deg) scale(0.8);
+        }
     }
 }
 
 // Mobile solution.
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     #appContainer {
-        transform: translate(-50%, -50%) 
-            rotate(-90deg) scale(0.5);
+        transform: translate(-50%, -50%) rotate(-90deg) scale(0.8);
+    }
+
+    @media (orientation: portrait) {
+        #appContainer {
+            transform: translate(-50%, -50%) 
+                rotate(-90deg) 
+                scale(0.5);
+        }
     }
 }
